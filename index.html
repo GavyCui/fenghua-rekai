@@ -1,205 +1,437 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>奉化热开五金厂 - 橱柜拉篮阻尼轨道专家</title>
+    <title>REIKAI Hardware | 热开五金 - Professional Kitchen Slide Manufacturer Since 1996</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; }
+        :root { --primary: #a65a5a; --primary-dark: #7a4040; --secondary: #1a2a3a; --accent: #2c3e50; --gold: #c9a86c; --light: #f8f9fa; --cream: #f5f3f0; }
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; line-height: 1.6; color: #333; background: var(--light); }
+        .lang-switch { position: fixed; top: 80px; right: 20px; z-index: 999; background: white; border-radius: 30px; padding: 5px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; gap: 5px; }
+        .lang-btn { padding: 8px 20px; border: none; background: transparent; border-radius: 25px; cursor: pointer; font-weight: 600; transition: all 0.3s; }
+        .lang-btn.active { background: var(--secondary); color: white; }
+        header { background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%); color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Language Switch */
-        .lang-switch { position: absolute; top: 20px; right: 20px; }
-        .lang-switch a { color: white; text-decoration: none; padding: 5px 15px; border: 1px solid rgba(255,255,255,0.5); border-radius: 20px; font-size: 14px; transition: all 0.3s; }
-        .lang-switch a:hover { background: white; color: #667eea; }
-        
-        /* Header */
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 60px 0; text-align: center; position: relative; }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        header p { font-size: 1.2em; opacity: 0.9; }
-        
-        /* Company Info */
-        .company-info { background: #f8f9fa; padding: 40px 0; }
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 20px; }
-        .info-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .info-card h3 { color: #667eea; margin-bottom: 10px; }
-        
-        /* Products */
-        .products { padding: 60px 0; }
-        .section-title { text-align: center; font-size: 2em; margin-bottom: 40px; color: #333; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .product-card { background: white; border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-        .product-img { height: 200px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); display: flex; align-items: center; justify-content: center; font-size: 3em; }
-        .product-info { padding: 25px; }
-        .product-info h3 { font-size: 1.3em; margin-bottom: 10px; color: #333; }
-        .product-info p { color: #666; margin-bottom: 15px; }
-        .product-features { list-style: none; }
-        .product-features li { padding: 5px 0; color: #555; }
-        .product-features li::before { content: "✓"; color: #667eea; margin-right: 8px; font-weight: bold; }
-        
-        /* Features */
-        .features { background: #f8f9fa; padding: 60px 0; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px; }
-        .feature-item { text-align: center; padding: 30px; }
-        .feature-icon { font-size: 3em; margin-bottom: 15px; }
-        .feature-item h3 { margin-bottom: 10px; color: #333; }
-        
-        /* Contact */
-        .contact { padding: 60px 0; text-align: center; }
-        .contact-info { display: inline-block; text-align: left; margin-top: 30px; padding: 30px; background: #f8f9fa; border-radius: 12px; }
-        .contact-item { margin: 15px 0; font-size: 1.1em; }
-        .contact-item strong { color: #667eea; display: inline-block; width: 100px; }
-        
-        /* Footer */
-        footer { background: #333; color: white; text-align: center; padding: 30px 0; }
-        
-        /* CTA Button */
-        .cta-button { display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 20px; transition: transform 0.3s; }
-        .cta-button:hover { transform: scale(1.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .logo span { color: var(--gold); }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: var(--gold); }
+        .hero { background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%); color: white; padding: 150px 0 100px; text-align: center; }
+        .hero h1 { font-size: 3.2rem; margin-bottom: 1rem; font-weight: 300; letter-spacing: 3px; }
+        .hero-highlight { background: rgba(52, 73, 94, 0.9); padding: 10px 25px; border-radius: 5px; display: inline-block; margin-bottom: 10px; font-weight: 600; }
+        .hero-year { color: var(--gold); font-weight: 600; display: block; margin-top: 15px; font-size: 0.7em; letter-spacing: 5px; }
+        .hero h1 span { color: var(--gold); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 1; max-width: 700px; margin-left: auto; margin-right: auto; font-weight: 400; }
+        .hero-subtitle { font-size: 1rem; opacity: 1; margin-top: -1rem; margin-bottom: 2rem; font-weight: 500; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn { padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; border: none; cursor: pointer; font-size: 1rem; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(139, 90, 90, 0.25); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid white; }
+        .btn-secondary:hover { background: white; color: var(--secondary); }
+        .btn-whatsapp { background: #7a9e7a; color: white; display: flex; align-items: center; gap: 10px; }
+        .btn-whatsapp:hover { background: #5c7a5c; }
+        .stats { background: white; padding: 60px 0; margin-top: -50px; position: relative; z-index: 10; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center; }
+        .stat-item h3 { font-size: 2.5rem; color: var(--primary); font-weight: 700; letter-spacing: 2px; }
+        .stat-item p { color: #222; font-weight: 600; }
+        .about { padding: 100px 0; background: white; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image { border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+        .about-image img { width: 100%; display: block; }
+        .about-content h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 20px; font-weight: 600; letter-spacing: 2px; }
+        .about-content p { margin-bottom: 15px; color: #222; line-height: 1.8; font-weight: 400; }
+        .history-box { background: var(--cream); color: var(--secondary); padding: 30px; border-radius: 15px; margin-top: 30px; border-left: 4px solid var(--gold); }
+        .history-box h3 { color: var(--primary); margin-bottom: 15px; font-weight: 700; }
+        .products { padding: 100px 0; background: #f8f9fa; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.2rem; color: var(--secondary); margin-bottom: 1rem; font-weight: 600; letter-spacing: 2px; }
+        .section-title .subtitle { color: #333; font-size: 1.1rem; max-width: 700px; margin: 0 auto; font-weight: 500; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; }
+        .product-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .product-card:hover { transform: translateY(-10px); }
+        .product-image { height: 300px; overflow: hidden; }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; }
+        .product-info { padding: 30px; }
+        .product-tag { background: var(--gold); color: var(--secondary); padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; letter-spacing: 1px; }
+        .product-info h3 { font-size: 1.3rem; color: var(--secondary); margin: 15px 0 10px; font-weight: 700; }
+        .product-specs { display: flex; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        .spec { background: #f0f0f0; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; }
+        .product-price { font-size: 1.6rem; color: var(--primary); font-weight: 700; margin-top: 15px; letter-spacing: 1px; }
+        .features { padding: 100px 0; background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%); color: white; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 60px; }
+        .feature { text-align: center; padding: 40px; background: rgba(255,255,255,0.1); border-radius: 20px; transition: all 0.3s; }
+        .feature:hover { background: rgba(255,255,255,0.15); transform: translateY(-5px); }
+        .feature i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
+        .contact { padding: 100px 0; background: white; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 4rem; }
+        .contact-info h3 { font-size: 2rem; color: var(--secondary); margin-bottom: 15px; }
+        .contact-info .subtitle { color: #333; margin-bottom: 40px; font-weight: 500; }
+        .contact-item { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 30px; }
+        .contact-item i { font-size: 1.5rem; color: var(--primary); width: 55px; height: 55px; background: rgba(139, 90, 90, 0.08); border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .contact-item div strong { display: block; color: var(--secondary); font-size: 1.1rem; margin-bottom: 5px; }
+        .contact-item div p { color: #222; font-weight: 500; }
+        .contact-form { background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%); padding: 50px; border-radius: 20px; color: white; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: none; border-radius: 10px; background: rgba(255,255,255,0.1); color: white; font-size: 1rem; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.5); }
+        footer { background: #0f0f1a; color: white; padding: 60px 0 30px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 40px; }
+        .footer-section h4 { color: var(--gold); margin-bottom: 20px; }
+        .footer-section p, .footer-section a { color: rgba(255,255,255,0.7); text-decoration: none; line-height: 1.8; }
+        .footer-section a:hover { color: var(--gold); }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); }
+        @media (max-width: 768px) { .lang-switch { top: 70px; right: 10px; } .nav-links { display: none; } .hero h1 { font-size: 2rem; } .about-grid { grid-template-columns: 1fr; } }
+        .lang-en .cn, .lang-en .zh-only { display: none !important; }
+        .lang-zh .en-only { display: none !important; }
     </style>
 </head>
-<body>
-    <!-- Header -->
+<body class="lang-en">
+    <div class="lang-switch">
+        <button class="lang-btn" onclick="setLanguage('zh')">中文</button>
+        <button class="lang-btn active" onclick="setLanguage('en')">English</button>
+    </div>
+
     <header>
-        <div class="lang-switch">
-            <a href="en.html">English</a>
-        </div>
         <div class="container">
-            <h1>奉化热开五金厂</h1>
-            <p>专业橱柜拉篮阻尼轨道制造商 · 20年行业经验</p>
-            <a href="#contact" class="cta-button">立即咨询</a>
+            <nav>
+                <div class="logo">REIKAI <span>HARDWARE</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home" data-en="Home" data-zh="首页">Home</a></li>
+                    <li><a href="#about" data-en="About" data-zh="关于">About</a></li>
+                    <li><a href="#products" data-en="Products" data-zh="产品">Products</a></li>
+                    <li><a href="#contact" data-en="Contact" data-zh="联系">Contact</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <!-- Company Info -->
-    <section class="company-info">
+    <section class="hero" id="home">
         <div class="container">
-            <h2 class="section-title">企业简介</h2>
-            <div class="info-grid">
-                <div class="info-card">
-                    <h3>🏭 工厂历史</h3>
-                    <p>前身为奉化鑫达工具制造有限公司，现发展为奉化热开五金厂，专注五金制造20余年。</p>
+            <h1>
+                <span class="en-only"><span class="hero-highlight">Professional Kitchen Hardware</span> <span class="hero-year">Since 1996</span></span>
+                <span class="zh-only"><span class="hero-highlight">专业厨房五金制造商</span> <span class="hero-year">始于1996</span></span>
+            </h1>
+            <p class="en-only"><strong>REIKAI Hardware</strong> - Upgraded from XINDA Tool with professional R&D team. Custom solutions for listed companies. Close partnership with Taiwan enterprises.</p>
+            <p class="zh-only"><strong>热开五金</strong> - 鑫达工具全面升级，拥有专业技术研发团队，为上市公司定制产品，与台湾企业深度合作</p>
+            <p class="hero-subtitle en-only">Formerly FengHua XINDA Tool Mfg. (Est. 1996) | OEM/ODM for Listed Companies | Taiwan Partnership</p>
+            <p class="hero-subtitle zh-only">前身为奉化鑫达工具制造有限公司（1996年成立）| 上市公司定制 | 台湾技术合作</p>
+            <div class="cta-buttons">
+                <a href="#products" class="btn btn-primary en-only">View Products</a>
+                <a href="#products" class="btn btn-primary zh-only">查看产品</a>
+                <a href="https://wa.me/8615867550550" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span class="en-only">WhatsApp Us</span>
+                    <span class="zh-only">微信/WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>30+</h3>
+                    <p class="en-only">Years Experience</p>
+                    <p class="zh-only">年行业经验</p>
                 </div>
-                <div class="info-card">
-                    <h3>🎯 专业领域</h3>
-                    <p>专注于橱柜拉篮阻尼轨道的研发、生产与销售，产品远销欧美及东南亚市场。</p>
+                <div class="stat-item">
+                    <h3>1996</h3>
+                    <p class="en-only">Year Established</p>
+                    <p class="zh-only">年成立</p>
                 </div>
-                <div class="info-card">
-                    <h3>✅ 品质保证</h3>
-                    <p>严格的质量控制体系，产品通过多项国际认证，支持OEM/ODM定制服务。</p>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p class="en-only">Product Models</p>
+                    <p class="zh-only">产品型号</p>
+                </div>
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p class="en-only">Export Countries</p>
+                    <p class="zh-only">出口国家</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products -->
-    <section class="products">
+    <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">主营产品</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img">🗄️</div>
-                    <div class="product-info">
-                        <h3>三节阻尼滑轨</h3>
-                        <p>静音缓冲，承重能力强，适用于各类橱柜拉篮</p>
-                        <ul class="product-features">
-                            <li>静音阻尼系统</li>
-                            <li>45kg高承重</li>
-                            <li>10万次开合测试</li>
-                            <li>防锈镀锌处理</li>
-                        </ul>
-                    </div>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="factory.jpg" alt="XINDA Factory">
                 </div>
-                <div class="product-card">
-                    <div class="product-img">🚪</div>
-                    <div class="product-info">
-                        <h3>骑马抽滑轨</h3>
-                        <p>高端橱柜首选，隐藏式设计，美观实用</p>
-                        <ul class="product-features">
-                            <li>隐藏式安装</li>
-                            <li>三维调节功能</li>
-                            <li>30kg均匀承重</li>
-                            <li>快装快拆设计</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-img">📦</div>
-                    <div class="product-info">
-                        <h3>调味篮轨道</h3>
-                        <p>专为厨房调味篮设计，灵活收纳，取用方便</p>
-                        <ul class="product-features">
-                            <li>窄柜专用设计</li>
-                            <li>多层收纳方案</li>
-                            <li>防滑缓冲垫</li>
-                            <li>易清洁表面</li>
-                        </ul>
+                <div class="about-content">
+                    <h2 class="en-only">About REIKAI Hardware</h2>
+                    <h2 class="zh-only">关于热开五金</h2>
+                    <p class="en-only"><strong>Ningbo Fenghua REIKAI Hardware Factory</strong> is the upgraded successor of <strong>FengHua XINDA Tool Manufacturing Co., Ltd.</strong> (Est. 1996). With our professional R&D team and advanced technical capabilities, we have successfully transformed from traditional tool manufacturing to specialized high-end kitchen and furniture hardware production.</p>
+                    <p class="zh-only"><strong>宁波奉化热开五金厂</strong>是<strong>奉化鑫达工具制造有限公司</strong>（成立于1996年）的全面升级版本。依托专业的技术研发团队和先进的制造能力，我们已成功从传统工具制造转型为高端厨房家具五金专业制造商。</p>
+                    <p class="en-only">We pride ourselves on providing <strong>custom solutions for listed companies</strong> and maintaining <strong>close technical partnerships with Taiwan enterprises</strong>. Our commitment to quality and innovation has made us a trusted partner for customers in 50+ countries.</p>
+                    <p class="zh-only">我们为<strong>上市公司提供定制产品解决方案</strong>，并与<strong>台湾企业保持密切技术合作</strong>。凭借对品质和创新的追求，我们已成为50多个国家客户的信赖合作伙伴。</p>
+                    <div class="history-box">
+                        <h3 class="en-only">Our Evolution | 我们的升级</h3>
+                        <h3 class="zh-only">我们的升级 | Our Evolution</h3>
+                        <p class="en-only"><strong>1996</strong> - Founded as FengHua XINDA Tool Manufacturing Co., Ltd.<br>
+                        <strong>2024</strong> - Upgraded to REIKAI Hardware with professional R&D team<br>
+                        <strong>Partnership</strong> - Close technical cooperation with Taiwan enterprises<br>
+                        <strong>Capability</strong> - Custom solutions for listed companies</p>
+                        <p class="zh-only"><strong>1996年</strong> - 成立奉化鑫达工具制造有限公司<br>
+                        <strong>2024年</strong> - 全面升级热开五金，组建专业技术研发团队<br>
+                        <strong>技术合作</strong> - 与台湾企业建立密切技术合作关系<br>
+                        <strong>定制能力</strong> - 为上市公司提供定制化产品解决方案</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="en-only">Our Products</h2>
+                <h2 class="zh-only">产品展示</h2>
+                <p class="subtitle en-only">High-quality kitchen slides and cabinet hardware</p>
+                <p class="subtitle zh-only">高品质厨房滑轨及橱柜五金</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="slide-main.jpg" alt="Basket Slide">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag en-only">BEST SELLER</span>
+                        <span class="product-tag zh-only">热销产品</span>
+                        <h3 class="en-only">Kitchen Basket Slides</h3>
+                        <h3 class="zh-only">厨房拉篮滑轨</h3>
+                        <p class="en-only">Heavy-duty damping slides specially designed for kitchen pull-out baskets and drawers.</p>
+                        <p class="zh-only">专为厨房拉篮和抽屉设计的重型缓冲滑轨。</p>
+                        <div class="product-specs">
+                            <span class="spec">450-600mm</span>
+                            <span class="spec">35-55kg</span>
+                            <span class="spec en-only">Soft-close</span>
+                            <span class="spec zh-only">缓冲</span>
+                        </div>
+                        <div class="product-price">$3.50/pc FOB</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="slide-detail.jpg" alt="Drawer Slide">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag en-only">POPULAR</span>
+                        <span class="product-tag zh-only">人气产品</span>
+                        <h3 class="en-only">Three-Section Drawer Slides</h3>
+                        <h3 class="zh-only">三节抽屉滑轨</h3>
+                        <p class="en-only">Full extension ball bearing slides with hydraulic damping for smooth, quiet operation.</p>
+                        <p class="zh-only">全拉出滚珠滑轨，配备液压阻尼系统，运行顺滑静音。</p>
+                        <div class="product-specs">
+                            <span class="spec">250-600mm</span>
+                            <span class="spec">35-50kg</span>
+                            <span class="spec en-only">Ball Bearing</span>
+                            <span class="spec zh-only">滚珠</span>
+                        </div>
+                        <div class="product-price">$2.80/pc FOB</div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="gas-main.jpg" alt="Gas Spring">
+                    </div>
+                    <div class="product-info">
+                        <span class="product-tag en-only">NEW</span>
+                        <span class="product-tag zh-only">新品</span>
+                        <h3 class="en-only">Cabinet Gas Springs</h3>
+                        <h3 class="zh-only">橱柜气撑杆</h3>
+                        <p class="en-only">High-quality gas struts for cabinet lift-up doors with adjustable force.</p>
+                        <p class="zh-only">高品质橱柜上翻门气撑杆，力度可调节。</p>
+                        <div class="product-specs">
+                            <span class="spec">50N-200N</span>
+                            <span class="spec en-only">Steel</span>
+                            <span class="spec zh-only">钢材</span>
+                            <span class="spec en-only">Adjustable</span>
+                            <span class="spec zh-only">可调</span>
+                        </div>
+                        <div class="product-price">$1.20/pc FOB</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="features">
         <div class="container">
-            <h2 class="section-title">我们的优势</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🏆</div>
-                    <h3>品质卓越</h3>
-                    <p>严格质检，确保每件产品都符合国际标准</p>
+            <div class="section-title" style="color: white;">
+                <h2 class="en-only">Why Choose XINDA</h2>
+                <h2 class="zh-only">为什么选择鑫达</h2>
+                <p class="subtitle" style="color: rgba(255,255,255,0.8);">30 years of manufacturing excellence</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-flask"></i>
+                    <h3 class="en-only">Professional R&D Team</h3>
+                    <h3 class="zh-only">专业研发团队</h3>
+                    <p class="en-only">Upgraded with dedicated technical research & development team</p>
+                    <p class="zh-only">全面升级，拥有专业技术研发队伍</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">💰</div>
-                    <h3>工厂直供</h3>
-                    <p>源头工厂，价格优势，无中间商赚差价</p>
+                <div class="feature">
+                    <i class="fas fa-building"></i>
+                    <h3 class="en-only">Listed Company Partner</h3>
+                    <h3 class="zh-only">上市公司合作</h3>
+                    <p class="en-only">Custom solutions developed for listed companies</p>
+                    <p class="zh-only">为上市公司提供定制化产品解决方案</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🚚</div>
-                    <h3>快速交付</h3>
-                    <p>充足库存，快速发货，支持小批量定制</p>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <h3 class="en-only">Quality Assured</h3>
+                    <h3 class="zh-only">质量保证</h3>
+                    <p class="en-only">100% inspection before shipment</p>
+                    <p class="zh-only">出货前100%检验</p>
                 </div>
-                <div class="feature-item">
-                    <div class="feature-icon">🛠️</div>
-                    <h3>定制服务</h3>
-                    <p>支持OEM/ODM，根据需求定制专属产品</p>
+                <div class="feature">
+                    <i class="fas fa-handshake"></i>
+                    <h3 class="en-only">Taiwan Partnership</h3>
+                    <h3 class="zh-only">台湾技术合作</h3>
+                    <p class="en-only">Close technical cooperation with Taiwan enterprises</p>
+                    <p class="zh-only">与台湾企业保持密切技术合作关系</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">联系我们</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <strong>公司名称</strong> 奉化热开五金厂
+            <div class="section-title">
+                <h2 class="en-only">Contact Us</h2>
+                <h2 class="zh-only">联系我们</h2>
+                <p class="subtitle en-only">Get in touch for quotes and inquiries</p>
+                <p class="subtitle zh-only">获取报价和产品咨询</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3 class="en-only">REIKAI Hardware Factory</h3>
+                    <h3 class="zh-only">热开五金厂</h3>
+                    <p class="subtitle en-only">Upgraded from XINDA Tool (Est. 1996) | Professional R&D Team | Taiwan Partnership</p>
+                    <p class="subtitle zh-only">鑫达工具全面升级（1996年成立）| 专业技术研发团队 | 台湾技术合作</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong class="en-only">Address</strong>
+                            <strong class="zh-only">地址</strong>
+                            <p>No.14 Jiangning Road, Jiangkou Street, Fenghua District, Ningbo City, Zhejiang Province, China</p>
+                            <p class="zh-only" style="margin-top: 5px;">浙江省宁波市奉化区江口街道江宁路14号</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong class="en-only">Company Email</strong>
+                            <strong class="zh-only">公司邮箱</strong>
+                            <p>fenghuaxinda@163.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-user-tie"></i>
+                        <div>
+                            <strong class="en-only">Business Contact</strong>
+                            <strong class="zh-only">业务对接</strong>
+                            <p>gavy_0922@163.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <strong class="en-only">WhatsApp / WeChat</strong>
+                            <strong class="zh-only">微信/WhatsApp</strong>
+                            <p>+86 158 6755 0550</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong class="en-only">Tel</strong>
+                            <strong class="zh-only">电话</strong>
+                            <p>+86 574 8865 1699 / 8865 2505</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <strong>公司邮箱</strong> fenghuaxinda@163.com
-                </div>
-                <div class="contact-item">
-                    <strong>工厂地址</strong> 浙江省宁波市奉化区
-                </div>
-                <div class="contact-item">
-                    <strong>主营业务</strong> 橱柜拉篮阻尼轨道
+                
+                <div class="contact-form">
+                    <h3 class="en-only">Send Inquiry</h3>
+                    <h3 class="zh-only">发送询盘</h3>
+                    <p class="en-only">Fill in the form below and we'll respond within 24 hours</p>
+                    <p class="zh-only">填写以下表单，我们将在24小时内回复</p>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name / 您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email / 您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="WhatsApp / WeChat / 微信">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message / 您的留言" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">
+                            <span class="en-only">Send Message</span>
+                            <span class="zh-only">发送消息</span>
+                        </button>
+                    </form>
                 </div>
             </div>
-            <br>
-            <a href="mailto:fenghuaxinda@163.com" class="cta-button">发送询盘</a>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 奉化热开五金厂 版权所有</p>
-            <p>专业橱柜拉篮阻尼轨道制造商</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="en-only">REIKAI Hardware</h4>
+                    <h4 class="zh-only">热开五金</h4>
+                    <p class="en-only">Upgraded from XINDA Tool Mfg. (Est. 1996). Professional R&D team. Custom solutions for listed companies. Taiwan technical partnership.</p>
+                    <p class="zh-only">鑫达工具全面升级（1996年成立）。专业技术研发团队。上市公司定制服务。台湾技术合作。</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="en-only">Contact</h4>
+                    <h4 class="zh-only">联系方式</h4>
+                    <p>WhatsApp/WeChat: +86 158 6755 0550</p>
+                    <p>Email: fenghuaxinda@163.com</p>
+                    <p>Business: gavy_0922@163.com</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="en-only">Address</h4>
+                    <h4 class="zh-only">地址</h4>
+                    <p>No.14 Jiangning Road, Jiangkou Street, Fenghua District, Ningbo City, Zhejiang Province, China</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 1996-2024 XINDA Hardware Co., Ltd. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        function setLanguage(lang) {
+            document.body.className = 'lang-' + lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
